@@ -84,12 +84,12 @@ public class Robot extends TimedRobot {
     //reset gyro to 0 when robot is turned on
     driveGyro.reset();
 
-    // reset the timer on the brain
+    // reset the timer on the brain to 0 - you can reset it anywhere in code like this
     driveTimer.reset();
   
-    // PID values to drive straight- setpoint is set at 0
+    // PID values to drive straight- setpoint is set at 0 or straight ahead
 
-    //!!!!!!!!!!!!!!!!!!!  CHANGE ME- use these P and I values in your code !!!!!!!!!!//////
+    //!!!!!!!!!!!!!!!!!!!  CHANGE ME- change these P and I values in your code !!!!!!!!!!//////
     kP = 0.00;
     kI = 0.00;
 
@@ -119,6 +119,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Heading Setpoint", headingSetpoint);
     SmartDashboard.putNumber("kP", kP);
     SmartDashboard.putNumber("kI", kI);
+    // this puts the current timer value on the dashboard
+    // note that the timer is acccessed statically
+    SmartDashboard.putNumber("Brain Timer", Timer.getFPGATimestamp());
   }
 
   @Override
@@ -166,11 +169,12 @@ public class Robot extends TimedRobot {
     // When reset and pointing straight the gyro angle will be 0
     // When turning right it will increase and will not wrap around after 180 or 360,
     //        it will keep incrementing
-    // When turnging left it will decrease and will keep decrementing
+    // When turnging left it will be negative and will keep decrementing
 
-    // This code will drive straight when button A on the X box controller is pressed
 
-    
+
+    // This code will run when button A is pressed on the Xbox controller- change it
+    // so that the robot drives straight
 
     if(driveStraightButton.getAsBoolean()) {
       /////////////////!!!!!!!!!!  Add your code here !!!!!!!!!!!!!!!!!///////////////
